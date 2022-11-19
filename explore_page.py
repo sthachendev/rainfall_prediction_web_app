@@ -5,9 +5,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 import plotly.figure_factory as ff
-import altair as alt
+# import altair as alt
 
-df = pd.read_csv('rainfall.csv')
+df = pd.read_csv('Data/rainfall.csv')
 
 def show_data_frame():
     st.dataframe(df,use_container_width=True)

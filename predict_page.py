@@ -37,7 +37,7 @@ def home():
 def predict_page():
     st.title('Enter the features to predict')
 
-    model = pickle.load(open('model.pkl', 'rb'))
+    model = pickle.load(open('Model/model.pkl', 'rb'))
 
     location_array = ['Paro','Simkotha','Haa','Kanglung','Mongar',
     'Chamkhar','Deothang','Punakha','Pemagatshel','Tashiyangtse']
