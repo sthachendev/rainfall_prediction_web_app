@@ -3,7 +3,6 @@ import pickle
 import numpy as np
 from streamlit_option_menu import option_menu
 from explore_page import show_data_frame, show_heat_map, show_rainfall_chart, show_rainfall_chart_group
-# from PIL import Image
 
 def show_predict_page():
 
@@ -98,11 +97,32 @@ def explore():
 
 def team():
     st.title('Team Members')
-    # image = Image.open('./image/user.jpg')
-    
-    # st.image(image)
-    st.write('Sherab Tharchen Dorji')
-    st.write('Ugyen Tenzin')
-    st.write('Tshewang Dema')
-    st.write('Sonam Tobden')
+
+    expander = st.expander('Sherab Tharchen Dorji')
+    expander.write("""
+    The chart above shows some numbers I picked for you.
+    I rolled actual dice for these, so they're *guaranteed* to
+    be random.
+    """)
+
+    expander = st.expander('Ugyen Tenzin')
+    expander.write("""
+    The chart above shows some numbers I picked for you.
+    I rolled actual dice for these, so they're *guaranteed* to
+    be random.
+    """)
+
+    expander = st.expander('Tshewang Dema')
+    expander.write("""
+    The chart above shows some numbers I picked for you.
+    I rolled actual dice for these, so they're *guaranteed* to
+    be random.
+    """)
+
+    expander = st.expander('Sonam Tobden')
+    expander.write("""
+    The chart above shows some numbers I picked for you.
+    I rolled actual dice for these, so they're *guaranteed* to
+    be random.
+    """)
 
