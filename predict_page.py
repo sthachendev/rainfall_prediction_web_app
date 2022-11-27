@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 from streamlit_option_menu import option_menu
 from explore_page import show_data_frame, show_heat_map, show_rainfall_chart, show_rainfall_chart_group
-
+from PIL import Image
 def show_predict_page():
 
     # with st.sidebar:
@@ -27,14 +27,21 @@ def show_predict_page():
         team()
 
 def home():
-    st.title('Rainfall Prediction')
-    st.write("##### Accuracy of rainfall forecasting has great importance for countries like Bhutan whose economy is largely dependent on hydro-power project and agriculture. ")
-    st.write('Rainfall')
-    show_rainfall_chart()
-    show_rainfall_chart_group()
+    st.write("###### Accuracy of rainfall forecasting has great importance for countries like Bhutan whose economy is largely dependent on hydro-power project and agriculture. ")
+    # col1, col2 = st.columns(2)
+
+    st.title('Prediction Arrcuray')
+    st.write('The prediction of the our model is 67 on train dataset and it is 72 on test dataset.')
+    # with col1:
+        # image = Image.open('./Image/cloud-rain.png')
+        # st.image(image)
+    
+    # st.write('Rainfall')
+    # show_rainfall_chart()
+    # show_rainfall_chart_group()
 
 def predict_page():
-    st.title('Enter the features to predict')
+    st.title('Enter & Predict!')
 
     model = pickle.load(open('Model/model.pkl', 'rb'))
 
@@ -42,14 +49,7 @@ def predict_page():
     'Chamkhar','Deothang','Punakha','Pemagatshel','Tashiyangtse']
 
     location_array_encoded = [5, 6, 7, 9, 0, 1, 2, 3, 4, 8]
-
-    location_input = st.selectbox('Location', location_array)
-
-    for i in location_array:
-        if location_input == i:
-            location_data = location_array_encoded[location_array.index(i)]
-            #st.write(location_data)
-
+    
     year_array = []
     year_start= 2000
     year_end = 2100
@@ -57,25 +57,35 @@ def predict_page():
     for i in range(year_start, year_end):
         year_array.append(i)
 
-    year = st.selectbox('Year',year_array)
-
     month_array = ['JAN','FEB','MAR','APR','MAY',
     'JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+    
+    location_input = st.selectbox('Location', location_array)
 
-    month_input = st.selectbox('Month', month_array)
+    col1, col2 = st.columns(2)
+
+    with col2:
+        month_input = st.selectbox('Month', month_array)
+        minT = st.number_input('Min Temperature')
+        ws = st.number_input('WS')
+        
+    for i in location_array:
+        if location_input == i:
+            location_data = location_array_encoded[location_array.index(i)]
+            #st.write(location_data)
 
     for i in month_array:
         if month_input == i:
             month_data = month_array.index(i)+1
             #st.write(month_data)
 
-    maxT = st.number_input('Max Temperature (c)')
-    minT = st.number_input('Min Temperature')
-    rh = st.number_input('RH')
-    ws = st.number_input('WS')
+    with col1:
+        year = st.selectbox('Year',year_array)
+        maxT = st.number_input('Max Temperature (c)')
+        rh = st.number_input('RH')
 
     predict = st.button('Predict')
-    
+
     if predict:
         input_data = (location_data, year, month_data, maxT, minT, rh, ws)
         input_data_as_numpy_array = np.asarray(input_data)
@@ -87,42 +97,50 @@ def predict_page():
             st.write('Rainfall', result[0].round(2),'ml')
         else:
             st.write('No rainfall', result[0].round(2))
+    
 
 def explore():
     st.title('Data Exploration & Data Visualization')
-    st.write('Dataset')
-    show_data_frame()
-    st.write('Heatmap')
-    show_heat_map()
+    exp = st.expander('Dataset')
+    with exp:
+        show_data_frame()
+
+    exp = st.expander('Heatmap')
+    with exp:
+        show_heat_map()
+    
 
 def team():
     st.title('Team Members')
 
-    expander = st.expander('Sherab Tharchen Dorji')
-    expander.write("""
-    The chart above shows some numbers I picked for you.
-    I rolled actual dice for these, so they're *guaranteed* to
-    be random.
-    """)
+    col1, col2, col3, col4 = st.columns(4)        
+    
+    with col1:
+        image = Image.open('./Image/user.jpeg')
+        st.image(image, 'Sherab Tharchen Dorji')
+        st.write('Data Engineer & FullStack')
+        
+    with col2:
+        image = Image.open('./Image/user.jpeg')
+        st.image(image, 'Ugyen Tenzin')
+        st.write('Frontend')
 
-    expander = st.expander('Ugyen Tenzin')
-    expander.write("""
-    The chart above shows some numbers I picked for you.
-    I rolled actual dice for these, so they're *guaranteed* to
-    be random.
-    """)
+    with col3:
+        image = Image.open('./Image/user3.jpg')
+        st.image(image, 'Tshewang Dema')
+        st.write('Data Analyst')
 
-    expander = st.expander('Tshewang Dema')
-    expander.write("""
-    The chart above shows some numbers I picked for you.
-    I rolled actual dice for these, so they're *guaranteed* to
-    be random.
-    """)
+    with col4:
+        image = Image.open('./Image/user.jpeg')
+        st.image(image, 'Sonam Tobden')
+        st.write('Data Collector')
 
-    expander = st.expander('Sonam Tobden')
-    expander.write("""
-    The chart above shows some numbers I picked for you.
-    I rolled actual dice for these, so they're *guaranteed* to
-    be random.
-    """)
+    # expander = st.expander('asdad')
+
+    # with expander:
+    #     st.write("""
+    #     The chart above shows some numbers I picked for you.
+    #     I rolled actual dice for these, so they're *guaranteed* to
+    #     be random.
+    #     """)
 

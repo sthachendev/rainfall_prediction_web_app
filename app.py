@@ -6,4 +6,6 @@ st.set_page_config(
     page_icon='Image/cloud-rain.png',  
     initial_sidebar_state = 'auto')
 
+st.title('Rainfall Prediction')
+
 show_predict_page()
