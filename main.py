@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 from streamlit_option_menu import option_menu
-from explore_page import show_data_frame, show_heat_map, show_rainfall_chart, show_rainfall_chart_group
+from explore_page import show_data_frame, show_heat_map, rfa
 from PIL import Image
 def show_predict_page():
 
@@ -30,8 +30,8 @@ def home():
     st.write("###### Accuracy of rainfall forecasting has great importance for countries like Bhutan whose economy is largely dependent on hydro-power project and agriculture. ")
     # col1, col2 = st.columns(2)
 
-    st.title('Prediction Arrcuray')
-    st.write('The prediction of the our model is 67 on train dataset and it is 72 on test dataset.')
+    st.title('Prediction Accuracy')
+    st.write('The accuracy of the our model is 67 on train dataset and it is 71 on test dataset.')
     st.write()
     # with col1:
         # image = Image.open('./Image/cloud-rain.png')
@@ -40,6 +40,7 @@ def home():
     # st.write('Rainfall')
     # show_rainfall_chart()
     # show_rainfall_chart_group()
+    rfa()
 
 def predict_page():
     st.title('Enter & Predict!')
