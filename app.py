@@ -1,5 +1,5 @@
 import streamlit as st
-from predict_page import show_predict_page
+from main import show_predict_page
 
 st.set_page_config(
     page_title='Rainfall Prediction', 

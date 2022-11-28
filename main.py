@@ -32,6 +32,7 @@ def home():
 
     st.title('Prediction Arrcuray')
     st.write('The prediction of the our model is 67 on train dataset and it is 72 on test dataset.')
+    st.write()
     # with col1:
         # image = Image.open('./Image/cloud-rain.png')
         # st.image(image)
@@ -118,22 +119,18 @@ def team():
     with col1:
         image = Image.open('./Image/user.jpeg')
         st.image(image, 'Sherab Tharchen Dorji')
-        st.write('Data Engineer & FullStack')
         
     with col2:
         image = Image.open('./Image/user.jpeg')
         st.image(image, 'Ugyen Tenzin')
-        st.write('Frontend')
 
     with col3:
         image = Image.open('./Image/user3.jpg')
         st.image(image, 'Tshewang Dema')
-        st.write('Data Analyst')
 
     with col4:
         image = Image.open('./Image/user.jpeg')
         st.image(image, 'Sonam Tobden')
-        st.write('Data Collector')
 
     # expander = st.expander('asdad')
 
