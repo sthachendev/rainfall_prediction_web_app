@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 
-import seaborn as sns
-import matplotlib.pyplot as plt
+# import seaborn as sns
+# import matplotlib.pyplot as plt
 
-import plotly.figure_factory as ff
+# import plotly.figure_factory as ff
 
 df = pd.read_csv('Data/rainfall.csv')
 
@@ -23,14 +23,18 @@ def rfa():
     with col1:
 
         st.write("###### Random Forest Accuracy")
-        st.write("Train set accuracy: ", 0.9172)
-        st.write("Test set accuracy : ", 0.7108)
+        st.write("Train set accuracy: ", 0.9413)
+        st.write("Test set accuracy : ", 0.6941)
+        st.write('MSE', 0.2874)
+        st.write('RMSE', 0.5361)
     
     with col2:
 
         st.write("###### Decision Tree Accuracy")
-        st.write("Train set accuracy: ", 0.7406)
-        st.write("Test set accuracy : ", 0.6153)
+        st.write("Train set accuracy: ", 0.7235)
+        st.write("Test set accuracy : ", 0.6497)
+        st.write('MSE', 0.3291)
+        st.write('RMSE', 0.5736)
 
     st.write('')
 
@@ -39,14 +43,18 @@ def rfa():
     with col1:
 
         st.write("###### KNN Accuracy")
-        st.write("Train set accuracy: ", 0.7174)
-        st.write("Test set accuracy : ", 0.6734)
+        st.write("Train set accuracy: ", 0.7290)
+        st.write("Test set accuracy : ", 0.7134)
+        st.write('MSE', 0.2691)
+        st.write('RMSE', 0.5189)
 
     with col2:
 
         st.write("###### SVM Accuracy")
-        st.write("Train set accuracy: ", 0.6753)
-        st.write("Test set accuracy : ", 0.7172)
+        st.write("Train set accuracy: ", 0.9099)
+        st.write("Test set accuracy : ", 0.4120)
+        st.write('MSE', 0.5452)
+        st.write('RMSE', 0.7383)
 
 
     
