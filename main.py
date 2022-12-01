@@ -1,10 +1,12 @@
 import streamlit as st
 import pickle
 import numpy as np
+import pandas as pd
+
 from streamlit_option_menu import option_menu
-from explore_page import show_data_frame, rfa
 from PIL import Image
 
+df = pd.read_csv('Data/rainfall.csv')
 
 def show_predict_page():
 
@@ -34,7 +36,43 @@ def home():
     st.write('The accuracy of the our model is 67 on train dataset and it is 71 on test dataset.')
     st.write()
 
-    rfa()
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.write("###### Random Forest Accuracy")
+        st.write("Train set accuracy: ", 0.9413)
+        st.write("Test set accuracy : ", 0.6941)
+        st.write('MSE', 0.2874)
+        st.write('RMSE', 0.5361)
+    
+    with col2:
+
+        st.write("###### Decision Tree Accuracy")
+        st.write("Train set accuracy: ", 0.7235)
+        st.write("Test set accuracy : ", 0.6497)
+        st.write('MSE', 0.3291)
+        st.write('RMSE', 0.5736)
+
+    st.write('')
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.write("###### KNN Accuracy")
+        st.write("Train set accuracy: ", 0.7290)
+        st.write("Test set accuracy : ", 0.7134)
+        st.write('MSE', 0.2691)
+        st.write('RMSE', 0.5189)
+
+    with col2:
+
+        st.write("###### SVM Accuracy")
+        st.write("Train set accuracy: ", 0.9099)
+        st.write("Test set accuracy : ", 0.4120)
+        st.write('MSE', 0.5452)
+        st.write('RMSE', 0.7383)
 
 def predict_page():
     st.title('Enter & Predict!')
@@ -98,7 +136,7 @@ def explore():
     exp = st.expander('Dataset')
     with exp:
         st.write('The dataset is collected from the National Center of Meteorology and Hydrology. The dataset contain features such as location, year, month, date, maximum temperature, minimum temperature, relative humidity, wind speed, and rainfall. The data was recorded from 2020 to 2021 from 10 different locations. The meteorology station records the values of the environmental variable every day for each year directly from the devices in the station.')
-        show_data_frame()
+        st.dataframe(df,use_container_width=True)
 
     exp = st.expander('Heatmap')
     with exp:
