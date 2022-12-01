@@ -19,7 +19,7 @@ def home():
     st.write("###### Accuracy of rainfall forecasting has great importance for countries like Bhutan whose economy is largely dependent on hydro-power project and agriculture. ")
 
     st.title('Prediction Accuracy')
-    st.write('The accuracy of the our model is 67 on train dataset and it is 71 on test dataset.')
+    st.write('The accuracy of the our model is 72.90 on train dataset and it is 71.34 on test dataset.')
     st.write()
 
     col1, col2 = st.columns(2)
