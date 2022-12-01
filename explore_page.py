@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 
-import seaborn as sns
-import matplotlib.pyplot as plt
+# import seaborn as sns
+# import matplotlib.pyplot as plt
 
-import plotly.figure_factory as ff
+# import plotly.figure_factory as ff
 
 df = pd.read_csv('Data/rainfall.csv')
 
