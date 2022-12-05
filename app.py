@@ -112,7 +112,7 @@ def predict_page():
         result = model.predict(input_data_reshaped)
 
         if (result>0):
-            st.write('Rainfall', result[0].round(2),'ml')
+            st.write('Rainfall', result[0].round(2),'mm')
         else:
             st.write('No rainfall')
     
@@ -168,7 +168,7 @@ def team():
         st.image(image, 'Tshewang Dema')
 
     with col4:
-        image = Image.open('./Image/user.jpeg')
+        image = Image.open('./Image/user4.jpeg')
         st.image(image, 'Sonam Tobden')
 
 
