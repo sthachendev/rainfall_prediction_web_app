@@ -168,7 +168,7 @@ def team():
         st.image(image, 'Tshewang Dema')
 
     with col4:
-        image = Image.open('./Image/user4.jpeg')
+        image = Image.open('./Image/user4.jpg')
         st.image(image, 'Sonam Tobden')
 
 
